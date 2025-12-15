@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <title>Happy Birthday Aradhana 🌸</title>
 
-  <!-- Google AdSense -->
+  <!-- ✅ Google AdSense Main Script -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5280038806592869"
-       crossorigin="anonymous"></script>
+     crossorigin="anonymous"></script>
 
   <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
 
@@ -44,6 +44,12 @@
       border-radius: 10px;
       margin-top: 20px;
       box-shadow: 0 0 25px rgba(255, 182, 193, 0.8);
+      animation: cakeGlow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes cakeGlow {
+      from { box-shadow: 0 0 15px #ffb6c1; }
+      to { box-shadow: 0 0 30px #ff69b4; }
     }
 
     .candle {
@@ -69,9 +75,9 @@
     }
 
     @keyframes flicker {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.2); opacity: 0.8; }
+      100% { transform: scale(1); opacity: 1; }
     }
 
     #wishMessage {
@@ -79,31 +85,63 @@
       font-size: 1.5rem;
       color: #7b3f61;
       opacity: 0;
-      transition: opacity 1s;
+      transition: opacity 1s ease-in-out;
     }
 
-    button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 20px;
-      background: #c94f7c;
-      color: white;
-      font-size: 1rem;
-      cursor: pointer;
+    .floating {
+      position: absolute;
+      bottom: 20px;
+      font-size: 1.3rem;
+      color: #c94f7c;
+      animation: floatUp 6s linear forwards;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-600px); opacity: 0; }
     }
 
     .note {
-      margin-top: 25px;
+      margin-top: 40px;
       font-size: 1.3rem;
       color: #7b3f61;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #7b3f61;
+      width: 0;
+      animation: typing 6s steps(60, end) forwards;
     }
 
-    .ad-box {
-      margin-top: 25px;
-      width: 100%;
-      max-width: 320px;
-      text-align: center;
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    .butterfly {
+      position: absolute;
+      width: 40px;
+      height: 30px;
+      background: radial-gradient(circle at 30% 50%, #ffb6c1, transparent 70%),
+                  radial-gradient(circle at 70% 50%, #d8bfd8, transparent 70%);
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: flutter 8s linear infinite;
+    }
+
+    @keyframes flutter {
+      0% { transform: translateX(-100px); }
+      100% { transform: translateX(110vw) translateY(-200px); }
+    }
+
+    button {
+      margin-top:20px;
+      padding:10px 20px;
+      border:none;
+      border-radius:20px;
+      background:#c94f7c;
+      color:white;
+      font-size:1rem;
+      cursor:pointer;
     }
   </style>
 </head>
@@ -112,9 +150,21 @@
 
   <h1>Happy Birthday Aradhana 🌸</h1>
 
+  <!-- ✅ AdSense Ad Unit -->
+  <ins class="adsbygoogle"
+     style="display:block; margin:20px auto;"
+     data-ad-client="ca-pub-5280038806592869"
+     data-ad-slot="1234567890"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
   <div class="cake">
-    <div class="candle" onclick="blowCandle()">
-      <div class="flame"></div>
+    <div class="candle">
+      <div class="flame" onclick="blowCandle()"></div>
     </div>
   </div>
 
@@ -122,22 +172,7 @@
 
   <button onclick="releaseWishes()">Click for Surprise 🎁</button>
 
-  <div class="note">
-    Like a flower, you bring beauty and light to everyone around you. 🌸
-  </div>
-
-  <!-- Google AdSense Ad Unit -->
-  <div class="ad-box">
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-5280038806592869"
-         data-ad-slot="1234567890"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-  </div>
+  <div class="note">Like a flower, you bring beauty and light to everyone around you. 🌸</div>
 
   <script>
     function blowCandle() {
@@ -146,8 +181,25 @@
     }
 
     function releaseWishes() {
-      alert("🎉 May all your wishes come true, Aradhana!");
+      ["Joy 🌼","Peace 🌸","Love 💖","Happiness ✨"].forEach((t,i)=>{
+        setTimeout(()=>{
+          const s=document.createElement("span");
+          s.className="floating";
+          s.textContent=t;
+          s.style.left=Math.random()*innerWidth+"px";
+          document.body.appendChild(s);
+          setTimeout(()=>s.remove(),6000);
+        },i*700);
+      });
     }
+
+    setInterval(()=>{
+      const b=document.createElement("div");
+      b.className="butterfly";
+      b.style.top=Math.random()*innerHeight+"px";
+      document.body.appendChild(b);
+      setTimeout(()=>b.remove(),9000);
+    },4000);
   </script>
 
 </body>
