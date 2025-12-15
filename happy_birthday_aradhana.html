@@ -1,10 +1,15 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Happy Birthday Aradhana 🌸</title>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5280038806592869"
+       crossorigin="anonymous"></script>
+
   <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
@@ -65,7 +70,7 @@
       width: 10px;
       height: 20px;
       background: radial-gradient(circle, gold, orange);
-      border-radius: 50% 50% 50% 50%;
+      border-radius: 50%;
       animation: flicker 0.2s infinite;
     }
 
@@ -83,13 +88,11 @@
       transition: opacity 1s ease-in-out;
     }
 
-    /* Floating wishes */
     .floating {
       position: absolute;
       bottom: 20px;
       font-size: 1.3rem;
       color: #c94f7c;
-      opacity: 0.9;
       animation: floatUp 6s linear forwards;
     }
 
@@ -98,9 +101,8 @@
       100% { transform: translateY(-600px); opacity: 0; }
     }
 
-    /* Personal note */
     .note {
-      margin-top: 40px;
+      margin-top: 30px;
       font-size: 1.3rem;
       color: #7b3f61;
       white-space: nowrap;
@@ -115,46 +117,55 @@
       to { width: 100%; }
     }
 
-    /* Butterflies */
     .butterfly {
       position: absolute;
       width: 40px;
       height: 30px;
-      background: radial-gradient(circle at 30% 50%, #ffb6c1, transparent 70%),
-                  radial-gradient(circle at 70% 50%, #d8bfd8, transparent 70%);
+      background:
+        radial-gradient(circle at 30% 50%, #ffb6c1, transparent 70%),
+        radial-gradient(circle at 70% 50%, #d8bfd8, transparent 70%);
       border-radius: 50%;
       opacity: 0.8;
       animation: flutter 8s linear infinite;
     }
 
     @keyframes flutter {
-      0% { transform: translateX(-100px) translateY(0) rotate(0deg); }
-      50% { transform: translateX(50vw) translateY(-100px) rotate(20deg); }
-      100% { transform: translateX(110vw) translateY(-200px) rotate(-20deg); }
+      0% { transform: translateX(-100px) translateY(0); }
+      50% { transform: translateX(50vw) translateY(-100px); }
+      100% { transform: translateX(110vw) translateY(-200px); }
     }
 
-    /* Surprise button */
     button {
-      margin-top:20px;
-      padding:10px 20px;
-      border:none;
-      border-radius:20px;
-      background:#c94f7c;
-      color:white;
-      font-size:1rem;
-      cursor:pointer;
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      background: #c94f7c;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
     }
+
     button:hover {
-      background:#d870a3;
+      background: #d870a3;
+    }
+
+    .ad-container {
+      margin-top: 25px;
+      width: 100%;
+      max-width: 320px;
+      text-align: center;
     }
   </style>
 </head>
+
 <body>
+
   <h1>Happy Birthday Aradhana 🌸</h1>
 
   <div class="cake">
-    <div class="candle">
-      <div class="flame" onclick="blowCandle()"></div>
+    <div class="candle" onclick="blowCandle()">
+      <div class="flame"></div>
     </div>
   </div>
 
@@ -162,7 +173,22 @@
 
   <button onclick="releaseWishes()">Click for Surprise 🎁</button>
 
-  <div class="note">Like a flower, you bring beauty and light to everyone around you. 🌸</div>
+  <div class="note">
+    Like a flower, you bring beauty and light to everyone around you. 🌸
+  </div>
+
+  <!-- Google AdSense Ad Unit -->
+  <div class="ad-container">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-5280038806592869"
+         data-ad-slot="1234567890"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
 
   <script>
     function blowCandle() {
@@ -190,12 +216,13 @@
       b.className = "butterfly";
       b.style.top = Math.random() * window.innerHeight + "px";
       b.style.left = "-50px";
-      b.style.animationDuration = (6 + Math.random() * 4) + "s";
       document.body.appendChild(b);
       setTimeout(() => b.remove(), 10000);
     }
 
     setInterval(createButterfly, 4000);
   </script>
+
 </body>
 </html>
+
